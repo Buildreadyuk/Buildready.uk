@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build Ready — Pre-construction consultancy | Building certainty before construction</title>
+<meta name="description" content="Build Ready is a pre-construction consultancy. We appraise sites, interrogate cost plans and surface risk before you commit to site — so you build with certainty. Birmingham and UK-wide.">
+<meta name="theme-color" content="#0C1E38">
+<link rel="canonical" href="https://www.buildready.uk/">
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Build Ready — Building certainty before construction">
+<meta property="og:description" content="Pre-construction advice, due diligence, risk management and cost certainty for developers, investors and landowners.">
+<meta property="og:url" content="https://www.buildready.uk/">
+<meta property="og:locale" content="en_GB">
+
+<!-- Favicon: the BR mark, drawn inline -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Crect width='120' height='120' fill='%230C1E38'/%3E%3Ctext x='60' y='86' text-anchor='middle' font-family='Georgia,serif' font-size='74' font-weight='700' fill='%23F6F6F3'%3EB%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600&family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Build Ready",
+  "description": "Pre-construction consultancy providing development advice, technical due diligence, risk management and cost certainty.",
+  "slogan": "Building certainty before construction.",
+  "url": "https://www.buildready.uk/",
+  "email": "hello@buildready.uk",
+  "telephone": "+447377456659",
+  "areaServed": "United Kingdom",
+  "address": { "@type": "PostalAddress", "addressLocality": "Birmingham", "addressRegion": "West Midlands", "addressCountry": "GB" }
+}
+</script>
+
+<style>
+/* ============================================================
+   BUILD READY — design tokens
+   Palette and wordmark taken directly from the brand poster.
+   ============================================================ */
+:root{
+  --ink:        #0C1E38;   /* deep navy — primary brand */
+  --ink-deep:   #071426;   /* darkest field */
+  --ink-soft:   #16335A;   /* raised navy surfaces */
+  --gold:       #B98B4C;   /* brand gold */
+  --gold-light: #D9B67A;   /* hover / highlight */
+  --paper:      #F6F6F3;   /* drafting-paper off-white */
+  --paper-warm: #EDEDE8;   /* recessed paper */
+  --slate:      #5B6C82;   /* secondary text on paper */
+  --mist:       rgba(246,246,243,.62); /* secondary text on navy */
+
+  --line:       rgba(12,30,56,.15);
+  --line-soft:  rgba(12,30,56,.09);
+  --line-light: rgba(246,246,243,.16);
+  --line-gold:  rgba(185,139,76,.55);
+  --rail:       rgba(12,30,56,.055);
+  --rail-light: rgba(246,246,243,.075);
+
+  --r: 2px;
+  --maxw: 1240px;
+  --gutter: clamp(20px, 5vw, 68px);
+  --ease: cubic-bezier(.22,.61,.36,1);
+
+  --f-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --f-roman:   "Cinzel", Georgia, serif;
+  --f-body:    "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:    "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth; -webkit-text-size-adjust:100%}
+section[id]{scroll-margin-top:96px}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:var(--f-body); font-weight:300; font-size:1.0625rem; line-height:1.7;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+img,svg{max-width:100%; display:block}
+a{color:inherit}
+button,input,select,textarea{font:inherit; color:inherit}
+
+::selection{background:var(--gold); color:var(--ink)}
+:focus-visible{outline:2px solid var(--gold); outline-offset:3px; border-radius:1px}
+
+.skip{position:absolute; left:-9999px; top:0; z-index:200; background:var(--gold); color:var(--ink);
+  padding:12px 20px; font-family:var(--f-mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; text-decoration:none}
+.skip:focus{left:12px; top:12px}
+
+/* ---------- shared layout ---------- */
+.wrap{width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:var(--gutter)}
+.band{position:relative; padding-block:clamp(84px,10vw,150px); overflow:hidden}
+.band--paper{background:var(--paper)}
+.band--warm{background:var(--paper-warm)}
+.band--ink{background:var(--ink); color:var(--paper)}
+.band--ink h2,.band--ink h3{color:var(--paper)}
+
+/* setting-out rails: the vertical gridlines a building is located against */
+.rails{position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:repeating-linear-gradient(to right, var(--rail) 0 1px, transparent 1px 25%);
+  background-position:left top}
+.band--ink .rails{background-image:repeating-linear-gradient(to right, var(--rail-light) 0 1px, transparent 1px 25%)}
+.band > .wrap{position:relative; z-index:1}
+
+/* ---------- type ---------- */
+h1,h2,h3,h4{font-family:var(--f-display); font-weight:300; margin:0; letter-spacing:-.015em; color:var(--ink)}
+h2{font-size:clamp(1.95rem,3.5vw,3.05rem); line-height:1.08}
+h3{font-size:clamp(1.15rem,1.6vw,1.42rem); line-height:1.25; font-weight:400; letter-spacing:-.01em}
+p{margin:0 0 1.1em}
+p:last-child{margin-bottom:0}
+
+.eyebrow{font-family:var(--f-roman); font-weight:600; font-size:.7rem; letter-spacing:.32em;
+  text-transform:uppercase; color:var(--gold); margin:0}
+.mono{font-family:var(--f-mono); font-size:.68rem; font-weight:500; letter-spacing:.18em; text-transform:uppercase}
+.lede{font-size:clamp(1.06rem,1.35vw,1.22rem); line-height:1.65; color:var(--slate); max-width:60ch}
+.band--ink .lede{color:var(--mist)}
+.muted{color:var(--slate)}
+.band--ink .muted{color:var(--mist)}
+
+/* ---------- grid reference bubble (drawing gridline marker) ---------- */
+.gridref{display:flex; align-items:center; gap:0; margin-bottom:28px}
+.gridref b{flex:none; width:34px; height:34px; border:1px solid var(--line-gold); border-radius:50%; display:grid; place-items:center;
+  font-family:var(--f-roman); font-weight:600; font-size:.78rem; color:var(--gold)}
+.gridref i{display:block; height:1px; width:clamp(28px,6vw,72px); background:rgba(185,139,76,.4)}
+.gridref span{font-family:var(--f-mono); font-size:.66rem; font-weight:500; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--gold); padding-left:14px}
+
+/* ---------- dimension line (the page's rule system) ---------- */
+.dim{display:flex; align-items:center; gap:14px; width:100%}
+.dim-line{flex:1; height:1px; background:rgba(185,139,76,.5)}
+.dim-tick{flex:none; width:1px; height:16px; background:rgba(185,139,76,.75); transform:rotate(45deg)}
+.dim-label{font-family:var(--f-mono); font-size:.66rem; font-weight:500; letter-spacing:.22em;
+  text-transform:uppercase; color:var(--gold); white-space:nowrap}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex; align-items:center; gap:12px; padding:15px 28px; border-radius:var(--r);
+  font-family:var(--f-mono); font-size:.72rem; font-weight:500; letter-spacing:.16em; text-transform:uppercase;
+  text-decoration:none; border:1px solid transparent; cursor:pointer; transition:.28s var(--ease)}
+.btn--gold{background:var(--gold); color:var(--ink-deep); border-color:var(--gold)}
+.btn--gold:hover{background:var(--gold-light); border-color:var(--gold-light)}
+.btn--ghost{background:transparent; color:var(--paper); border-color:rgba(246,246,243,.35)}
+.btn--ghost:hover{border-color:var(--gold); color:var(--gold)}
+.btn--ink{background:var(--ink); color:var(--paper); border-color:var(--ink)}
+.btn--ink:hover{background:var(--ink-soft); border-color:var(--ink-soft)}
+.btn .arw{transition:transform .28s var(--ease)}
+.btn:hover .arw{transform:translateX(4px)}
+
+/* ============================================================
+   MASTHEAD
+   ============================================================ */
+.mast{position:fixed; inset:0 0 auto; z-index:100; color:var(--paper); transition:background .35s var(--ease), border-color .35s var(--ease), backdrop-filter .35s}
+.mast::after{content:""; position:absolute; inset:auto 0 0; height:1px; background:transparent; transition:background .35s}
+.mast.is-solid{background:rgba(7,20,38,.92); backdrop-filter:saturate(140%) blur(10px)}
+.mast.is-solid::after{background:var(--line-light)}
+.mast-in{display:flex; align-items:center; justify-content:space-between; gap:24px; height:82px}
+
+.logo{display:flex; align-items:center; gap:14px; text-decoration:none}
+.logo svg{width:34px; height:34px; flex:none}
+.logo-txt{font-family:var(--f-roman); font-weight:600; font-size:.94rem; letter-spacing:.2em; line-height:1; color:var(--paper)}
+.logo-txt em{font-style:normal; color:var(--gold)}
+
+.nav{display:flex; align-items:center; gap:clamp(18px,2.4vw,34px)}
+.nav a{font-family:var(--f-mono); font-size:.7rem; font-weight:400; letter-spacing:.16em; text-transform:uppercase;
+  color:rgba(246,246,243,.72); text-decoration:none; transition:color .25s}
+.nav a:hover{color:var(--gold)}
+.nav .btn{padding:12px 22px; font-size:.68rem}
+
+.burger{display:none; width:44px; height:44px; background:none; border:1px solid rgba(246,246,243,.3);
+  border-radius:var(--r); cursor:pointer; padding:0; place-items:center}
+.burger span{display:block; width:18px; height:1px; background:var(--paper); margin:3.5px auto; transition:.3s var(--ease)}
+.mast.is-open .burger span:nth-child(1){transform:translateY(4.5px) rotate(45deg)}
+.mast.is-open .burger span:nth-child(2){opacity:0}
+.mast.is-open .burger span:nth-child(3){transform:translateY(-4.5px) rotate(-45deg)}
+
+.drawer{position:fixed; inset:82px 0 auto; background:var(--ink-deep); border-top:1px solid var(--line-light);
+  padding:8px var(--gutter) 34px; display:none; z-index:99}
+.mast.is-open + .drawer{display:block}
+.drawer a{display:block; padding:17px 0; border-bottom:1px solid var(--line-light); text-decoration:none;
+  font-family:var(--f-mono); font-size:.82rem; letter-spacing:.14em; text-transform:uppercase; color:var(--paper)}
+.drawer .btn{margin-top:26px; width:100%; justify-content:center; border-bottom:0}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{position:relative; background:var(--ink-deep); color:var(--paper); overflow:hidden;
+  padding-block:clamp(140px,17vw,210px) clamp(72px,9vw,110px); isolation:isolate}
+.hero::before{content:""; position:absolute; inset:0; z-index:-2;
+  background:
+    radial-gradient(120% 90% at 78% 8%, rgba(185,139,76,.16), transparent 58%),
+    radial-gradient(90% 80% at 10% 100%, rgba(22,51,90,.85), transparent 62%),
+    linear-gradient(165deg, #0A1B31 0%, #071426 62%, #050F1D 100%)}
+/* blueprint field */
+.hero::after{content:""; position:absolute; inset:0; z-index:-1; opacity:.5;
+  background-image:
+    linear-gradient(rgba(246,246,243,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(246,246,243,.045) 1px, transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(115% 100% at 62% 20%, #000 12%, transparent 78%);
+  mask-image:radial-gradient(115% 100% at 62% 20%, #000 12%, transparent 78%)}
+
+.hero-rails{position:absolute; inset:0; z-index:0; pointer-events:none}
+.hero-rails i{position:absolute; top:0; bottom:0; width:1px; background:rgba(246,246,243,.09);
+  transform:scaleY(0); transform-origin:top}
+.hero-rails i:nth-child(1){left:12%}
+.hero-rails i:nth-child(2){left:34%}
+.hero-rails i:nth-child(3){left:56%}
+.hero-rails i:nth-child(4){left:78%}
+
+.hero-in{position:relative; z-index:2; max-width:1000px}
+.hero .eyebrow{margin-bottom:30px}
+.hero h1{font-size:clamp(2.5rem,6.6vw,5.35rem); line-height:.99; font-weight:300; letter-spacing:-.028em; color:var(--paper)}
+.hero h1 .ln{display:block; overflow:hidden; padding-bottom:.14em; margin-bottom:-.14em}
+.hero h1 .ln > span{display:block}
+.hero h1 em{font-style:normal; color:var(--gold)}
+.hero-dim{margin:clamp(34px,4.4vw,52px) 0 clamp(28px,3.4vw,38px); max-width:820px}
+.hero-lede{max-width:57ch; font-size:clamp(1.02rem,1.25vw,1.16rem); color:rgba(246,246,243,.72); line-height:1.72}
+.hero-cta{display:flex; flex-wrap:wrap; gap:14px; margin-top:clamp(30px,3.6vw,44px)}
+
+.hero-foot{position:relative; z-index:2; margin-top:clamp(64px,8vw,104px); padding-top:26px;
+  border-top:1px solid var(--line-light); display:flex; flex-wrap:wrap; gap:10px 34px; align-items:baseline}
+.hero-foot .mono{color:rgba(246,246,243,.42)}
+.hero-foot .mono b{color:var(--gold); font-weight:500}
+
+/* ============================================================
+   B — FOUR PILLARS (poster's four-up, hairline divided)
+   ============================================================ */
+.pillars{display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--line); margin-top:44px}
+.pillar{padding:38px clamp(18px,2.4vw,34px) 8px; border-left:1px solid var(--line-soft)}
+.pillar:first-child{border-left:0; padding-left:0}
+.pillar svg{width:34px; height:34px; margin-bottom:24px; stroke:var(--gold); fill:none;
+  stroke-width:1.25; stroke-linecap:round; stroke-linejoin:round}
+.pillar h3{font-family:var(--f-roman); font-weight:600; font-size:.86rem; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--ink); margin-bottom:14px}
+.pillar p{font-size:.98rem; color:var(--slate); margin:0}
+
+/* ============================================================
+   C — THE CASE + influence/cost curve
+   ============================================================ */
+.case{display:grid; grid-template-columns:1fr 1fr; gap:clamp(38px,6vw,88px); align-items:start}
+.case-fig{position:relative; padding:26px 22px 20px; background:var(--paper); border:1px solid var(--line);
+  border-radius:var(--r); box-shadow:0 24px 60px -40px rgba(12,30,56,.5)}
+.case-fig figcaption{margin-top:16px; padding-top:14px; border-top:1px solid var(--line-soft);
+  font-family:var(--f-mono); font-size:.64rem; letter-spacing:.13em; text-transform:uppercase; color:var(--slate); line-height:1.7}
+.case-fig figcaption b{color:var(--ink); font-weight:500}
+.curve-draw{stroke-dasharray:900; stroke-dashoffset:900; transition:stroke-dashoffset 1.7s var(--ease)}
+.is-in .curve-draw{stroke-dashoffset:0}
+.curve-draw--b{transition-delay:.25s}
+.curve-band{opacity:0; transition:opacity .9s var(--ease) .85s}
+.is-in .curve-band{opacity:1}
+
+/* ============================================================
+   D — SERVICES
+   ============================================================ */
+.svcs{border-top:1px solid var(--line-light); margin-top:52px}
+.svc{display:grid; grid-template-columns:minmax(0,200px) minmax(0,1fr) minmax(0,1.05fr); gap:clamp(20px,3.4vw,52px);
+  padding:clamp(34px,4vw,52px) 0; border-bottom:1px solid var(--line-light); align-items:start}
+.svc-ix{font-family:var(--f-display); font-style:italic; font-weight:300;
+  font-size:clamp(1.08rem,1.55vw,1.32rem); line-height:1.3; letter-spacing:-.01em;
+  color:var(--gold); margin:0; padding-top:.1em}
+.svc h3{font-family:var(--f-roman); font-weight:600; font-size:clamp(.94rem,1.25vw,1.06rem); letter-spacing:.16em;
+  text-transform:uppercase; color:var(--paper); line-height:1.5}
+.svc h3 small{display:block; font-family:var(--f-display); font-size:1.42rem; font-weight:300; letter-spacing:-.01em;
+  text-transform:none; color:var(--gold-light); margin-top:12px; line-height:1.25}
+.svc-body p{color:var(--mist); font-size:1.02rem; margin-bottom:20px}
+.svc-list{list-style:none; margin:0; padding:0; display:grid; gap:9px}
+.svc-list li{position:relative; padding-left:22px; font-family:var(--f-mono); font-size:.7rem; font-weight:400;
+  letter-spacing:.09em; text-transform:uppercase; color:rgba(246,246,243,.56)}
+.svc-list li::before{content:""; position:absolute; left:0; top:.62em; width:9px; height:1px; background:var(--gold)}
+
+/* ============================================================
+   E — PROCESS
+   ============================================================ */
+.steps{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line);
+  border-radius:var(--r); margin-top:52px; overflow:hidden}
+.step{background:var(--paper); padding:clamp(26px,2.8vw,38px) clamp(20px,2vw,30px) clamp(30px,3.2vw,44px);
+  transition:background .3s var(--ease)}
+.step:hover{background:#fff}
+.step-n{font-family:var(--f-mono); font-size:.66rem; font-weight:500; letter-spacing:.2em; color:var(--gold);
+  padding-bottom:18px; margin-bottom:22px; border-bottom:1px solid var(--line-soft); display:flex; justify-content:space-between; gap:10px}
+.step-n span{color:var(--slate)}
+.step h3{font-size:1.2rem; margin-bottom:12px}
+.step p{font-size:.95rem; color:var(--slate); margin:0}
+
+/* ============================================================
+   F — SECTORS
+   ============================================================ */
+.sectors{display:flex; flex-wrap:wrap; gap:10px; margin:44px 0 0; padding:0; max-width:1000px}
+.sectors li{list-style:none; font-family:var(--f-mono); font-size:.7rem; font-weight:400; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--slate); border:1px solid var(--line); border-radius:var(--r);
+  padding:11px 18px; transition:.28s var(--ease)}
+.sectors li:hover{border-color:var(--gold); color:var(--ink); background:#fff}
+
+/* ============================================================
+   G — PROOF
+   ============================================================ */
+.stats{display:grid; grid-template-columns:repeat(4,1fr); margin-top:48px; border-top:1px solid var(--line-light)}
+.stat{padding:38px clamp(16px,2.2vw,30px) 0; border-left:1px solid var(--line-light)}
+.stat:first-child{border-left:0; padding-left:0}
+.stat b{display:block; font-family:var(--f-display); font-weight:300; font-size:clamp(2.2rem,4vw,3.3rem);
+  line-height:1; color:var(--gold); letter-spacing:-.02em}
+.stat span{display:block; margin-top:14px; font-family:var(--f-mono); font-size:.66rem; font-weight:400;
+  letter-spacing:.14em; text-transform:uppercase; color:rgba(246,246,243,.55); line-height:1.7}
+.quote{margin:clamp(56px,7vw,86px) 0 0; max-width:900px}
+.quote blockquote{margin:0; font-family:var(--f-display); font-weight:300; font-size:clamp(1.3rem,2.5vw,2rem);
+  line-height:1.34; letter-spacing:-.015em; color:var(--paper)}
+.quote figcaption{margin-top:26px; font-family:var(--f-mono); font-size:.68rem; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--gold)}
+.quote figcaption span{display:block; color:rgba(246,246,243,.45); margin-top:7px; letter-spacing:.12em}
+
+/* ============================================================
+   H — ENQUIRE
+   ============================================================ */
+.enq{display:grid; grid-template-columns:.85fr 1.15fr; gap:clamp(40px,6vw,92px); align-items:start}
+.enq-detail{margin-top:38px; display:grid; gap:0; border-top:1px solid var(--line)}
+.enq-detail div{padding:18px 0; border-bottom:1px solid var(--line-soft); display:flex; gap:18px; align-items:baseline}
+.enq-detail dt{flex:none; width:104px; font-family:var(--f-mono); font-size:.64rem; font-weight:500;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--gold)}
+.enq-detail dd{margin:0; font-size:.98rem; color:var(--ink)}
+.enq-detail a{text-decoration:none; border-bottom:1px solid var(--line); transition:border-color .25s}
+.enq-detail a:hover{border-color:var(--gold)}
+
+.form{display:grid; grid-template-columns:1fr 1fr; gap:26px 24px}
+.field{display:flex; flex-direction:column; gap:9px}
+.field--full{grid-column:1/-1}
+.field label{font-family:var(--f-mono); font-size:.64rem; font-weight:500; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--slate)}
+.field input,.field select,.field textarea{
+  width:100%; background:transparent; border:0; border-bottom:1px solid var(--line);
+  padding:10px 0; font-family:var(--f-body); font-weight:300; font-size:1rem; color:var(--ink);
+  border-radius:0; transition:border-color .25s}
+.field textarea{resize:vertical; min-height:104px; line-height:1.6}
+.field select{appearance:none; background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);
+  background-position:calc(100% - 11px) 1.15em, calc(100% - 6px) 1.15em; background-size:5px 5px; background-repeat:no-repeat; padding-right:26px}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0; border-bottom-color:var(--gold)}
+.field input::placeholder,.field textarea::placeholder{color:rgba(91,108,130,.5)}
+.form-foot{grid-column:1/-1; display:flex; flex-wrap:wrap; align-items:center; gap:18px 26px; margin-top:6px}
+.form-note{font-family:var(--f-mono); font-size:.62rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--slate); max-width:34ch; line-height:1.8}
+.form-msg{grid-column:1/-1; display:none; padding:16px 20px; border-left:2px solid var(--gold);
+  background:rgba(185,139,76,.09); font-size:.95rem; color:var(--ink)}
+.form-msg.is-on{display:block}
+
+/* ============================================================
+   FOOTER — drawn as a title block
+   ============================================================ */
+.foot{background:var(--ink-deep); color:var(--paper); padding-block:clamp(56px,6vw,78px) 34px}
+.tblock{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line-light);
+  border:1px solid var(--line-light); border-radius:var(--r); margin-top:44px}
+.tcell{background:var(--ink-deep); padding:20px 22px 22px}
+.tcell b{display:block; font-family:var(--f-mono); font-size:.6rem; font-weight:500; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--gold); margin-bottom:11px}
+.tcell span,.tcell a{font-size:.92rem; color:rgba(246,246,243,.78); text-decoration:none; line-height:1.6}
+.tcell a{display:block; transition:color .25s}
+.tcell a:hover{color:var(--gold)}
+.foot-top{display:flex; flex-wrap:wrap; justify-content:space-between; gap:30px; align-items:flex-end}
+.foot-top .logo-txt{font-size:1.05rem}
+.foot-links{display:flex; flex-wrap:wrap; gap:8px 28px}
+.foot-links a{font-family:var(--f-mono); font-size:.68rem; letter-spacing:.16em; text-transform:uppercase;
+  color:rgba(246,246,243,.6); text-decoration:none; transition:color .25s}
+.foot-links a:hover{color:var(--gold)}
+.foot-base{margin-top:34px; padding-top:22px; border-top:1px solid var(--line-light);
+  display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px 30px}
+.foot-base p{margin:0; font-family:var(--f-mono); font-size:.62rem; letter-spacing:.12em;
+  text-transform:uppercase; color:rgba(246,246,243,.38)}
+
+/* ============================================================
+   MOTION
+   ============================================================ */
+.rise{opacity:0; transform:translateY(22px); transition:opacity .8s var(--ease), transform .8s var(--ease)}
+.rise.is-in{opacity:1; transform:none}
+.rise[data-d="1"]{transition-delay:.09s}
+.rise[data-d="2"]{transition-delay:.18s}
+.rise[data-d="3"]{transition-delay:.27s}
+.rise[data-d="4"]{transition-delay:.36s}
+
+@keyframes setout{to{transform:scaleY(1)}}
+@keyframes riseIn{from{opacity:0; transform:translateY(105%)} to{opacity:1; transform:none}}
+@keyframes fadeIn{from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:none}}
+@keyframes drawX{from{transform:scaleX(0)} to{transform:scaleX(1)}}
+@keyframes justFade{to{opacity:1}}
+
+.js .hero-rails i{animation:setout .95s var(--ease) forwards}
+.js .hero-rails i:nth-child(1){animation-delay:.05s}
+.js .hero-rails i:nth-child(2){animation-delay:.13s}
+.js .hero-rails i:nth-child(3){animation-delay:.21s}
+.js .hero-rails i:nth-child(4){animation-delay:.29s}
+.js .hero .eyebrow{opacity:0; animation:fadeIn .8s var(--ease) .32s forwards}
+.js .hero h1 .ln > span{animation:riseIn .95s var(--ease) forwards; opacity:0}
+.js .hero h1 .ln:nth-child(1) > span{animation-delay:.44s}
+.js .hero h1 .ln:nth-child(2) > span{animation-delay:.55s}
+.js .hero h1 .ln:nth-child(3) > span{animation-delay:.66s}
+.js .hero-dim .dim-line{transform:scaleX(0); animation:drawX .8s var(--ease) .84s forwards}
+.js .hero-dim .dim-line:nth-child(2){transform-origin:left}
+.js .hero-dim .dim-line:nth-child(4){transform-origin:right}
+.js .hero-dim .dim-tick{opacity:0; animation:justFade .6s var(--ease) 1.15s forwards}
+.js .hero-dim .dim-label{opacity:0; animation:fadeIn .6s var(--ease) 1.15s forwards}
+.js .hero-lede{opacity:0; animation:fadeIn .8s var(--ease) 1.02s forwards}
+.js .hero-cta{opacity:0; animation:fadeIn .8s var(--ease) 1.16s forwards}
+.js .hero-foot{opacity:0; animation:fadeIn .8s var(--ease) 1.3s forwards}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1000px){
+  .nav{display:none}
+  .burger{display:grid}
+  .case{grid-template-columns:1fr}
+  .enq{grid-template-columns:1fr}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .pillars{grid-template-columns:repeat(2,1fr)}
+  .pillar{padding:32px 26px 22px; border-top:1px solid var(--line-soft)}
+  .pillar:nth-child(-n+2){border-top:0}
+  .pillar:nth-child(odd){border-left:0; padding-left:0}
+  .svc{grid-template-columns:1fr; gap:18px}
+  .svc-ix{padding-top:0; font-size:1.12rem}
+  .svc-ix br{display:none}
+  .stats{grid-template-columns:repeat(2,1fr); gap:0}
+  .stat{border-left:0; padding-left:0; padding-top:32px}
+  .stat:nth-child(even){padding-left:clamp(16px,4vw,30px); border-left:1px solid var(--line-light)}
+  .tblock{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:620px){
+  .form{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .pillars{grid-template-columns:1fr}
+  .pillar{padding:28px 0 20px; border-left:0; border-top:1px solid var(--line-soft)}
+  .pillar:first-child{border-top:0}
+  .stats{grid-template-columns:1fr}
+  .stat:nth-child(even){padding-left:0; border-left:0}
+  .tblock{grid-template-columns:1fr}
+  .hero-dim .dim-label{white-space:normal; letter-spacing:.16em; font-size:.6rem}
+  .btn{width:100%; justify-content:center}
+  .hero-cta{gap:12px}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none !important; transition:none !important}
+  .rise{opacity:1; transform:none}
+  .hero-rails i{transform:scaleY(1)}
+  .curve-draw{stroke-dashoffset:0}
+  .curve-band{opacity:1}
+  .js .hero .eyebrow,.js .hero h1 .ln > span,.js .hero-lede,.js .hero-cta,.js .hero-foot,
+  .js .hero-dim .dim-tick,.js .hero-dim .dim-label{opacity:1}
+  .js .hero-dim .dim-line{transform:scaleX(1)}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ============ MASTHEAD ============ -->
+<header class="mast" id="mast">
+  <div class="wrap mast-in">
+    <a class="logo" href="#top" aria-label="Build Ready — home">
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <path d="M62 8 H8 V112 H56" fill="none" stroke="currentColor" stroke-width="5"/>
+        <path d="M72 8 H112 V112 H74" fill="none" stroke="#B98B4C" stroke-width="5"/>
+        <text x="24" y="88" font-family="Cinzel, Georgia, serif" font-size="72" font-weight="600" fill="currentColor">B</text>
+        <text x="56" y="88" font-family="Cinzel, Georgia, serif" font-size="72" font-weight="600" fill="#B98B4C">R</text>
+      </svg>
+      <span class="logo-txt">BUILD <em>READY</em></span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="#approach">Approach</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#sectors">Sectors</a>
+      <a class="btn btn--gold" href="#enquire">Book a consultation</a>
+    </nav>
+
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="drawer" id="drawer">
+  <a href="#approach">Approach</a>
+  <a href="#services">Services</a>
+  <a href="#process">Process</a>
+  <a href="#sectors">Sectors</a>
+  <a href="#enquire">Contact</a>
+  <a class="btn btn--gold" href="#enquire">Book a consultation</a>
+</div>
+
+<main id="main">
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="hero-rails" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <div class="hero-in">
+      <p class="eyebrow">Pre-construction consultancy</p>
+      <h1>
+        <span class="ln"><span>The most expensive</span></span>
+        <span class="ln"><span>decisions are made</span></span>
+        <span class="ln"><span>before anyone <em>breaks ground.</em></span></span>
+      </h1>
+
+      <div class="dim hero-dim" role="presentation">
+        <span class="dim-tick"></span>
+        <span class="dim-line"></span>
+        <span class="dim-label">Building certainty before construction</span>
+        <span class="dim-line"></span>
+        <span class="dim-tick"></span>
+      </div>
+
+      <p class="hero-lede">Build Ready tests the numbers, the risk and the programme while they are still cheap to change. You reach site knowing what the job will really take — and whether it is worth doing at all.</p>
+
+      <div class="hero-cta">
+        <a class="btn btn--gold" href="#enquire">Book a consultation <span class="arw" aria-hidden="true">&#8594;</span></a>
+        <a class="btn btn--ghost" href="#approach">See how we work</a>
+      </div>
+    </div>
+
+    <div class="hero-foot">
+      <p class="mono"><b>Advice</b> &nbsp;Feasibility &amp; appraisal</p>
+      <p class="mono"><b>Diligence</b> &nbsp;Technical &amp; site</p>
+      <p class="mono"><b>Certainty</b> &nbsp;Cost, risk &amp; programme</p>
+      <p class="mono"><b>Based</b> &nbsp;Birmingham &middot; UK-wide</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ A — FOUR PILLARS ============ -->
+<section class="band band--paper" id="pillars">
+  <div class="rails" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="gridref rise"><b>A</b><i></i><span>What you get</span></div>
+    <h2 class="rise" data-d="1">Four things you should have<br>before you commit a penny to site.</h2>
+
+    <div class="pillars">
+      <div class="pillar rise" data-d="1">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="7.5"/><path d="M16 16l5 5"/><path d="M8 13v2M10.8 10.5v4.5M13.6 8v7"/></svg>
+        <h3>Clarity</h3>
+        <p>We uncover the facts that matter.</p>
+      </div>
+      <div class="pillar rise" data-d="2">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l7.5 3v6c0 4.4-3.1 8.4-7.5 10-4.4-1.6-7.5-5.6-7.5-10v-6z"/><path d="M8.6 11.8l2.5 2.5 4.4-4.6"/></svg>
+        <h3>Confidence</h3>
+        <p>We reduce risk and remove uncertainty.</p>
+      </div>
+      <div class="pillar rise" data-d="3">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 6.5h11v13h-11z"/><path d="M7.5 10h5M7.5 13h5M7.5 16h3"/><path d="M17 4.5l2.5 2.5-6 6-3 .5.5-3z"/></svg>
+        <h3>Strategy</h3>
+        <p>We provide the roadmap to move forward.</p>
+      </div>
+      <div class="pillar rise" data-d="4">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5h17"/><path d="M6 20.5V11h4.5v9.5M14.5 20.5V5.5h4v15"/><path d="M7.6 14h1.3M16.1 9h1.3"/></svg>
+        <h3>Success</h3>
+        <p>We help you build with certainty.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B — THE CASE ============ -->
+<section class="band band--warm" id="approach">
+  <div class="rails" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="gridref rise"><b>B</b><i></i><span>The case for early advice</span></div>
+
+    <div class="case">
+      <div>
+        <h2 class="rise">Right advice.<br>Stronger decisions.<br>Better outcomes.</h2>
+        <div class="dim rise" data-d="1" style="margin:30px 0 30px; max-width:340px" role="presentation">
+          <span class="dim-tick"></span><span class="dim-line"></span><span class="dim-tick"></span>
+        </div>
+        <p class="lede rise" data-d="1">By the time a contractor is on site, most of the money is already committed. The drawings are fixed, the contract is signed, and every change costs more than it would have six months earlier.</p>
+        <p class="lede rise" data-d="2">Build Ready works in the window before that. We appraise sites, interrogate cost plans, stress-test programmes and surface the risks that usually arrive too late to do anything about. We are not here to sell you a scheme — we are here to tell you what it will really take.</p>
+      </div>
+
+      <figure class="case-fig rise" data-d="2">
+        <svg viewBox="0 0 520 300" role="img" aria-label="Line chart: your ability to influence cost falls as a project progresses, while the cost of making a change rises. The two lines cross before construction begins.">
+          <!-- plot frame -->
+          <line x1="46" y1="252" x2="496" y2="252" stroke="rgba(12,30,56,.28)" stroke-width="1"/>
+          <line x1="46" y1="24" x2="46" y2="252" stroke="rgba(12,30,56,.28)" stroke-width="1"/>
+          <g stroke="rgba(12,30,56,.09)" stroke-width="1">
+            <line x1="46" y1="196" x2="496" y2="196"/><line x1="46" y1="140" x2="496" y2="140"/><line x1="46" y1="84" x2="496" y2="84"/>
+          </g>
+          <!-- the window we work in -->
+          <g class="curve-band">
+            <rect x="46" y="24" width="176" height="228" fill="rgba(185,139,76,.11)"/>
+            <line x1="222" y1="24" x2="222" y2="252" stroke="#B98B4C" stroke-width="1" stroke-dasharray="3 4"/>
+            <text x="56" y="42" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.6" fill="#B98B4C">WHERE BUILD READY WORKS</text>
+          </g>
+          <!-- ability to influence: high early, gone later -->
+          <path class="curve-draw" d="M46 52 C 140 60, 205 150, 300 200 S 430 244, 496 248"
+                fill="none" stroke="#B98B4C" stroke-width="2.25" stroke-linecap="round"/>
+          <!-- cost of change: low early, punishing later -->
+          <path class="curve-draw curve-draw--b" d="M46 244 C 150 240, 235 205, 315 145 S 438 58, 496 38"
+                fill="none" stroke="#0C1E38" stroke-width="2.25" stroke-linecap="round" stroke-dasharray="900" />
+          <!-- axis labels -->
+          <text x="46" y="272" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.4" fill="#5B6C82">RIBA 0&#8211;3 &middot; PRE-CONSTRUCTION</text>
+          <text x="496" y="272" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.4" fill="#5B6C82">RIBA 4&#8211;6 &middot; ON SITE</text>
+          <!-- legend -->
+          <g font-family="IBM Plex Mono, monospace" font-size="9.5" letter-spacing="1.2">
+            <line x1="46" y1="290" x2="66" y2="290" stroke="#B98B4C" stroke-width="2.25"/>
+            <text x="74" y="293" fill="#5B6C82">ABILITY TO INFLUENCE</text>
+            <line x1="250" y1="290" x2="270" y2="290" stroke="#0C1E38" stroke-width="2.25"/>
+            <text x="278" y="293" fill="#5B6C82">COST OF A CHANGE</text>
+          </g>
+        </svg>
+        <figcaption><b>Fig. 01</b> &mdash; Influence falls away as commitment builds. Every week you spend getting it right early buys back months of trouble on site.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ C — SERVICES ============ -->
+<section class="band band--ink" id="services">
+  <div class="rails" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="gridref rise"><b>C</b><i></i><span>Services</span></div>
+    <h2 class="rise" data-d="1">Four questions worth answering<br>before the first spade goes in.</h2>
+
+    <div class="svcs">
+      <article class="svc rise">
+        <p class="svc-ix">&ldquo;Does it<br>stack up?&rdquo;</p>
+        <h3>Expert guidance<small>Development advice &amp; feasibility</small></h3>
+        <div class="svc-body">
+          <p>An honest read on whether the site, the scheme and the numbers can carry your ambition &mdash; before you exchange, before you appoint a full design team, and while walking away is still an option.</p>
+          <ul class="svc-list">
+            <li>Site &amp; development appraisals</li>
+            <li>Options studies and massing sense-checks</li>
+            <li>Buildability and constraints review</li>
+            <li>Order-of-cost estimates and viability input</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="svc rise">
+        <p class="svc-ix">&ldquo;What&rsquo;s<br>hiding?&rdquo;</p>
+        <h3>Due diligence<small>Technical &amp; site investigation review</small></h3>
+        <div class="svc-body">
+          <p>Thorough analysis and insight. We read everything you have been handed &mdash; and work out what you have not been handed &mdash; so the surprises surface at desk stage rather than in a variation order.</p>
+          <ul class="svc-list">
+            <li>Technical due diligence for purchase or funding</li>
+            <li>Survey, ground and services information review</li>
+            <li>Planning conditions, S106 and CIL implications</li>
+            <li>Red-flag report with cost and time consequences</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="svc rise">
+        <p class="svc-ix">&ldquo;What could<br>go wrong?&rdquo;</p>
+        <h3>Risk management<small>Identify. Assess. Mitigate.</small></h3>
+        <div class="svc-body">
+          <p>A live risk register with owners, costs and dates against every line &mdash; not a spreadsheet that gets written once and never opened. We price the risk, then help you design it out.</p>
+          <ul class="svc-list">
+            <li>Risk workshops and quantified registers</li>
+            <li>Contingency and inflation modelling</li>
+            <li>Programme risk and critical-path testing</li>
+            <li>Mitigation strategy and ongoing review</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="svc rise">
+        <p class="svc-ix">&ldquo;Are we getting<br>value?&rdquo;</p>
+        <h3>Delivering value<small>Value management &amp; procurement strategy</small></h3>
+        <div class="svc-body">
+          <p>Better decisions lead to better results. We make sure the specification, the contract and the contractor are all pulling in the same direction &mdash; and that cost saved is not quality lost.</p>
+          <ul class="svc-list">
+            <li>Value engineering and specification review</li>
+            <li>Procurement route and contract advice</li>
+            <li>Tender strategy, lists and evaluation</li>
+            <li>Pre-contract negotiation support</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ D — PROCESS ============ -->
+<section class="band band--paper" id="process">
+  <div class="rails" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="gridref rise"><b>D</b><i></i><span>How we work</span></div>
+    <h2 class="rise" data-d="1">A clear route from &ldquo;maybe&rdquo;<br>to a signed contract.</h2>
+    <p class="lede rise" data-d="2" style="margin-top:24px">We map to the RIBA Plan of Work, so you always know which stage you are in, what has been settled, and what is still open.</p>
+
+    <div class="steps">
+      <div class="step rise" data-d="1">
+        <p class="step-n">01 <span>RIBA 0&#8211;1</span></p>
+        <h3>Brief &amp; feasibility</h3>
+        <p>We agree what success looks like, then test whether the site can deliver it. You get a straight answer on viability before the spending starts.</p>
+      </div>
+      <div class="step rise" data-d="2">
+        <p class="step-n">02 <span>RIBA 1&#8211;2</span></p>
+        <h3>Diligence &amp; risk</h3>
+        <p>We interrogate the information, find the gaps, and put a quantified risk register in front of you with the cost and time attached to each item.</p>
+      </div>
+      <div class="step rise" data-d="3">
+        <p class="step-n">03 <span>RIBA 2&#8211;3</span></p>
+        <h3>Cost &amp; programme</h3>
+        <p>Design is tested against budget and date, not the other way round. Where they do not meet, we show you the options rather than the problem.</p>
+      </div>
+      <div class="step rise" data-d="4">
+        <p class="step-n">04 <span>RIBA 3&#8211;4</span></p>
+        <h3>Procure &amp; commit</h3>
+        <p>The right route, the right tender list, the right contract terms &mdash; so the contractor you appoint is the one who can actually deliver it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ E — SECTORS ============ -->
+<section class="band band--warm" id="sectors">
+  <div class="rails" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="gridref rise"><b>E</b><i></i><span>Where we work</span></div>
+    <h2 class="rise" data-d="1">Sectors and clients.</h2>
+    <p class="lede rise" data-d="2" style="margin-top:24px">We advise developers, investors, funders, landowners and occupiers &mdash; from a single plot to a multi-phase scheme. Based in Birmingham, working across the UK.</p>
+    <!-- EDIT: trim this list to the sectors you actually want to be known for. -->
+    <ul class="sectors rise" data-d="2">
+      <li>Residential development</li>
+      <li>Build to rent</li>
+      <li>Student accommodation</li>
+      <li>Industrial &amp; logistics</li>
+      <li>Commercial &amp; office fit-out</li>
+      <li>Hotels &amp; leisure</li>
+      <li>Healthcare</li>
+      <li>Education</li>
+      <li>Refurbishment &amp; retrofit</li>
+      <li>Mixed-use regeneration</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ F — PROOF ============ -->
+<section class="band band--ink" id="proof">
+  <div class="rails" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="gridref rise"><b>F</b><i></i><span>Track record</span></div>
+    <h2 class="rise" data-d="1">Industry experience you can trust.</h2>
+
+    <!-- ============================================================
+         PLACEHOLDER FIGURES — replace all four with your real numbers
+         before this site goes live.
+         ============================================================ -->
+    <div class="stats">
+      <div class="stat rise" data-d="1"><b>25+</b><span>Years of combined<br>industry experience</span></div>
+      <div class="stat rise" data-d="2"><b>&pound;1.4bn</b><span>Development value<br>advised on</span></div>
+      <div class="stat rise" data-d="3"><b>180+</b><span>Schemes appraised<br>and stress-tested</span></div>
+      <div class="stat rise" data-d="4"><b>2 wks</b><span>Typical turnaround<br>on a feasibility review</span></div>
+    </div>
+
+    <!-- PLACEHOLDER TESTIMONIAL — swap for a real, approved client quote. -->
+    <figure class="quote rise" data-d="2">
+      <blockquote>&ldquo;They found two things in the first fortnight that would have cost us the best part of a year. We would not start another scheme without that review.&rdquo;</blockquote>
+      <figcaption>Client name, Job title<span>Company &middot; Scheme, City</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ G — ENQUIRE ============ -->
+<section class="band band--paper" id="enquire">
+  <div class="rails" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="gridref rise"><b>G</b><i></i><span>Start a conversation</span></div>
+
+    <div class="enq">
+      <div>
+        <h2 class="rise">Tell us about<br>the scheme.</h2>
+        <p class="lede rise" data-d="1" style="margin-top:26px">The first conversation is free and lasts about half an hour. Bring whatever you have &mdash; a site address, a sketch, a spreadsheet that will not balance &mdash; and we will tell you what we think, and whether you need us at all.</p>
+
+        <dl class="enq-detail rise" data-d="2">
+          <div><dt>Email</dt><dd><a href="mailto:hello@buildready.uk">hello@buildready.uk</a></dd></div>
+          <div><dt>Telephone</dt><dd><a href="tel:+447377456659">+44 7377 456659</a></dd></div>
+          <div><dt>Office</dt><dd>Birmingham, West Midlands</dd></div>
+          <div><dt>Coverage</dt><dd>United Kingdom</dd></div>
+        </dl>
+      </div>
+
+      <form class="form rise" data-d="1" id="enquiry" novalidate>
+        <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required placeholder="Your name"></div>
+        <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" type="text" autocomplete="organization" placeholder="Organisation"></div>
+        <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required placeholder="you@company.co.uk"></div>
+        <div class="field"><label for="f-phone">Telephone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="Optional"></div>
+        <div class="field"><label for="f-site">Site or location</label><input id="f-site" name="site" type="text" placeholder="Town, postcode or address"></div>
+        <div class="field">
+          <label for="f-stage">Current stage</label>
+          <select id="f-stage" name="stage">
+            <option>Considering a site</option>
+            <option>Pre-planning</option>
+            <option>Planning submitted or approved</option>
+            <option>Design underway, pre-tender</option>
+            <option>Tendering or pre-contract</option>
+            <option>Already on site</option>
+          </select>
+        </div>
+        <div class="field field--full"><label for="f-msg">What would you like to know?</label><textarea id="f-msg" name="message" placeholder="A couple of lines is plenty."></textarea></div>
+
+        <div class="form-msg" id="form-msg" role="status" aria-live="polite"></div>
+
+        <div class="form-foot">
+          <button class="btn btn--ink" type="submit">Send enquiry <span class="arw" aria-hidden="true">&#8594;</span></button>
+          <p class="form-note">We reply within one working day. Your details are never shared.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER — drawn as a title block ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="logo" href="#top" aria-label="Build Ready — back to top">
+        <svg viewBox="0 0 120 120" aria-hidden="true" style="width:40px;height:40px">
+          <path d="M62 8 H8 V112 H56" fill="none" stroke="currentColor" stroke-width="5"/>
+          <path d="M72 8 H112 V112 H74" fill="none" stroke="#B98B4C" stroke-width="5"/>
+          <text x="24" y="88" font-family="Cinzel, Georgia, serif" font-size="72" font-weight="600" fill="currentColor">B</text>
+          <text x="56" y="88" font-family="Cinzel, Georgia, serif" font-size="72" font-weight="600" fill="#B98B4C">R</text>
+        </svg>
+        <span class="logo-txt">BUILD <em>READY</em></span>
+      </a>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="#approach">Approach</a><a href="#services">Services</a><a href="#process">Process</a>
+        <a href="#sectors">Sectors</a><a href="#enquire">Contact</a>
+      </nav>
+    </div>
+
+    <div class="tblock">
+      <div class="tcell"><b>Practice</b><span>Build Ready Ltd<br>Pre-construction consultancy</span></div>
+      <div class="tcell"><b>Contact</b><a href="mailto:hello@buildready.uk">hello@buildready.uk</a><a href="tel:+447377456659">+44 7377 456659</a></div>
+      <div class="tcell"><b>Location</b><span>Birmingham, West Midlands<br>Working UK-wide</span></div>
+      <div class="tcell"><b>Registered</b><span>Company no. 17350608<br>Registered in England &amp; Wales</span></div>
+    </div>
+
+    <div class="foot-base">
+      <p>&copy; <span id="yr">2026</span> Build Ready Ltd. All rights reserved.</p>
+      <p>Right advice. Stronger decisions. Better outcomes.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* masthead: solid once you leave the hero */
+var mast = document.getElementById('mast');
+var onScroll = function(){ mast.classList.toggle('is-solid', window.scrollY > 40); };
+onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+/* mobile drawer */
+var burger = document.getElementById('burger');
+var drawer = document.getElementById('drawer');
+burger.addEventListener('click', function(){
+  var open = mast.classList.toggle('is-open');
+  mast.classList.add('is-solid');
+  burger.setAttribute('aria-expanded', open);
+  burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  document.body.style.overflow = open ? 'hidden' : '';
+});
+drawer.addEventListener('click', function(e){
+  if (e.target.tagName === 'A'){
+    mast.classList.remove('is-open');
+    burger.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+  }
+});
+
+/* scroll reveals */
+var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var targets = document.querySelectorAll('.rise, .case-fig');
+if (reduce || !('IntersectionObserver' in window)){
+  targets.forEach(function(el){ el.classList.add('is-in'); });
+} else {
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting){ en.target.classList.add('is-in'); io.unobserve(en.target); }
+    });
+  }, {rootMargin:'0px 0px -12% 0px', threshold:0.15});
+  targets.forEach(function(el){ io.observe(el); });
+}
+
+/* enquiry form
+   ------------------------------------------------------------------
+   Out of the box this opens the visitor's email client with everything
+   filled in, so the form works the moment the site is live.
+   To collect submissions properly instead, sign up for a free Formspree
+   account, then replace the body of this handler with a normal POST:
+
+     form.action = 'https://formspree.io/f/YOUR_FORM_ID';
+     form.method = 'post';
+
+   ------------------------------------------------------------------ */
+var form = document.getElementById('enquiry');
+var msg  = document.getElementById('form-msg');
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  var d = new FormData(form);
+  var name = (d.get('name')||'').toString().trim();
+  var email = (d.get('email')||'').toString().trim();
+  if (!name || !email || email.indexOf('@') < 1){
+    msg.textContent = 'Add your name and a valid email address so we can reply.';
+    msg.classList.add('is-on'); return;
+  }
+  var body = [
+    'Name: ' + name,
+    'Company: ' + (d.get('company')||'—'),
+    'Email: ' + email,
+    'Telephone: ' + (d.get('phone')||'—'),
+    'Site or location: ' + (d.get('site')||'—'),
+    'Current stage: ' + (d.get('stage')||'—'),
+    '',
+    (d.get('message')||'')
+  ].join('\n');
+  window.location.href = 'mailto:hello@buildready.uk'
+    + '?subject=' + encodeURIComponent('Enquiry — ' + (d.get('site') || name))
+    + '&body=' + encodeURIComponent(body);
+  msg.textContent = 'Opening your email app with the enquiry ready to send. If nothing happens, email hello@buildready.uk directly.';
+  msg.classList.add('is-on');
+});
+</script>
+</body>
+</html>
